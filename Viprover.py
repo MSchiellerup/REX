@@ -16,11 +16,11 @@ print frindo.set_turn_time(1500)
 
 sleep(1)
 
-print frindo.go()
+#print frindo.go()
 
-sleep(5)
+#sleep(5)
 
-print frindo.stop()
+#print frindo.stop()
 
 # request to read Front IR sensor (analog sensor 0)
 print "Front sensor = ", frindo.read_front_ir_sensor()
@@ -39,7 +39,7 @@ speedConst = 1.3
 print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)
 
 # Wait a bit while robot moves forward
-sleep(3)
+sleep(5)
 
 # send a stop command
 print frindo.stop()
