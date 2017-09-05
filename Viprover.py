@@ -40,7 +40,7 @@ sleep(1)
 #sleep(2)
 for x in range(1,5):
 	print frindo.right()
-	sleep(1)
+	sleep(0.5)
 	print frindo.stop()
 	sleep(1)
 
