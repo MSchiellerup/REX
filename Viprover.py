@@ -10,7 +10,7 @@ print("Running...")
 
 # Set speed
 print frindo.set_speed(100)
-print frindo.set_turnspeed(100)
+print frindo.set_turnspeed(150)
 print frindo.set_step_time(2000)
 print frindo.set_turn_time(1500)
 
@@ -39,7 +39,7 @@ print "Left sensor = ", frindo.read_left_ir_sensor()
 
 #sleep(2)
 
-print frindo.step_rotate_right()
+print frindo.right()
 
 sleep(1)
 
