@@ -41,7 +41,7 @@ print "Left sensor = ", frindo.read_left_ir_sensor()
 
 print frindo.right()
 
-sleep(0.55)
+sleep(0.53)
 
 # send a stop command
 print frindo.stop()
