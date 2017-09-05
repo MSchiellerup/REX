@@ -18,7 +18,7 @@ sleep(1)
 
 # Looping driving test 1
 print("First test drive, go-stop-right-stop")
-for x in range(1,5)
+for x in range(1,5):
 	print("Action %d", x)
 	print frindo.go()
 	sleep(3)
