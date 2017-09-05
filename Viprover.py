@@ -11,7 +11,7 @@ print("Running...")
 # Set speed
 print frindo.set_speed(100)
 print frindo.set_turnspeed(150)
-print frindo.set_step_time(2000)
+print frindo.set_step_time(1000)
 print frindo.set_turn_time(1500)
 
 sleep(1)
@@ -28,20 +28,20 @@ print "Left sensor = ", frindo.read_left_ir_sensor()
 
 
 # send a go_diff command to drive forward
-leftSpeed = 128
-speedConst = 1.3
-print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)
+#leftSpeed = 128
+#speedConst = 1.3
+#print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)
 
 # Wait a bit while robot moves forward
-sleep(5)
+#sleep(5)
 
-print frindo.stop()
+#print frindo.stop()
 
-sleep(2)
+#sleep(2)
 
 print frindo.step_rotate_right()
 
-sleep(2)
+sleep(1)
 
 # send a stop command
 print frindo.stop()
