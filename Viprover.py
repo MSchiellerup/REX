@@ -16,18 +16,23 @@ print frindo.set_turn_time(1000)
 
 sleep(1)
 
-def driveRobot(): #Sleep(4) for 100cm
+def driveRobot(cm): #Sleep(4) for 100cm
 	leftSpeed = 129
 	speedConst = 1.315
 	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
+	sleep(cm/25)
 
-driveRobot()
-sleep(4)
+#driveRobot()
+#sleep(4)
 
-print frindo.stop()
+#print frindo.stop()
 #sleep(1)
-print frindo.right()
+#print frindo.right()
 
 sleep(1)
+
+for x in range(1,5):
+	driveRobot(100)
+	print frindo.right()
 
 print frindo.stop()
