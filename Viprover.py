@@ -23,6 +23,10 @@ def driveRobot(cm): #Sleep(4) for 100cm
 	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
 	sleep(cm/25)
 
+def turnRobot(grader):
+	print frindo.right()
+	sleep((2.4/360)*grader)
+
 #driveRobot()
 #sleep(4)
 
@@ -34,8 +38,6 @@ sleep(1)
 
 for x in range(1,5):
 	driveRobot(100)
-	#sleep(1)
-	print frindo.right()
-	sleep(0.6)
+	turnRobot(90)
 
 print frindo.stop()
