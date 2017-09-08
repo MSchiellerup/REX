@@ -36,6 +36,6 @@ for x in range(1,5):
 	driveRobot(100)
 	#sleep(1)
 	print frindo.right()
-	sleep(1)
+	sleep(0.9)
 
 print frindo.stop()
