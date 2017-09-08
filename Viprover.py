@@ -21,6 +21,6 @@ leftSpeed = 128
 speedConst = 1.3
 print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)
 
-sleep(4.5)
+sleep(4.2)
 
 print frindo.stop()
