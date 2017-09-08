@@ -16,13 +16,13 @@ print frindo.set_turn_time(1000)
 
 sleep(1)
 
-def gogo():
+def driveRobot():
 	leftSpeed = 129
 	speedConst = 1.315
 	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
 
-gogo()
+print frindo.step_rotate_right()
 
-sleep(4)
+sleep(1)
 
 print frindo.stop()
