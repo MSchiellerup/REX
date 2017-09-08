@@ -37,7 +37,6 @@ print frindo.go_diff(129*2,int(round(1.305*129)),1,1)
 
 sleep(2)
 
-#Kør i en firkant
 
 
 print frindo.stop()
