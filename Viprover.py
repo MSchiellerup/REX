@@ -33,7 +33,7 @@ def driveSquared():
 		turnRobot(90)
 
 
-print frindo.go_diff(129*2,int(round(1.305*129)),1,1)
+print frindo.go_diff(200,100,1,1)
 
 sleep(2)
 
