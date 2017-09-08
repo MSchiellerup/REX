@@ -28,6 +28,6 @@ print frindo.stop()
 #sleep(1)
 print frindo.right()
 
-sleep(0.9)
+sleep(1)
 
 print frindo.stop()
