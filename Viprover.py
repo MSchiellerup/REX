@@ -23,6 +23,6 @@ def driveRobot():
 
 print frindo.right()
 
-sleep(1)
+sleep(2)
 
 print frindo.stop()
