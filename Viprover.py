@@ -25,7 +25,7 @@ driveRobot()
 sleep(4)
 
 print frindo.stop()
-sleep(1)
+#sleep(1)
 print frindo.right()
 
 sleep(1)
