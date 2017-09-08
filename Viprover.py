@@ -27,17 +27,17 @@ def turnRobot(grader):
 	print frindo.right()
 	sleep((2.4/360)*grader)
 
-#driveRobot()
-#sleep(4)
+def driveSquared():
+	for x in range(1,5):
+		driveRobot(100)
+		turnRobot(90)
 
-#print frindo.stop()
-#sleep(1)
-#print frindo.right()
 
-sleep(1)
+print frindo.go_diff(129*2,int(round(1.305*129)),1,1)
 
-for x in range(1,5):
-	driveRobot(100)
-	turnRobot(90)
+sleep(2)
+
+#Kør i en firkant
+
 
 print frindo.stop()
