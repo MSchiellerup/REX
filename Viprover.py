@@ -11,7 +11,7 @@ print("Running...")
 # Set speed
 print frindo.set_speed(70)
 print frindo.set_turnspeed(150)
-print frindo.set_step_time(2000)
+print frindo.set_step_time(1200)
 print frindo.set_turn_time(1000)
 
 sleep(1)
