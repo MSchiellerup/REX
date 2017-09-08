@@ -32,10 +32,10 @@ def driveSquared():
 		driveRobot(100)
 		turnRobot(90)
 
+speedConst = 1.305
+print frindo.go_diff(200,int(round(100*speedConst)),1,1)
 
-print frindo.go_diff(200,100,1,1)
-
-sleep(2)
+sleep(10)
 
 
 
