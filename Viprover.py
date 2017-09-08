@@ -16,10 +16,10 @@ print frindo.set_turn_time(1000)
 
 sleep(1)
 
-
-leftSpeed = 129
-speedConst = 1.315
-print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)
+def gogo():
+	leftSpeed = 129
+	speedConst = 1.315
+	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
 
 sleep(4)
 
