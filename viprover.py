@@ -56,7 +56,7 @@ for x in range(1,11):
 	LeftSensor = frindo.read_left_ir_sensor()
 
 	# request to read Front IR sensor (analog sensor 0)
-	print "{%i, %i, %i}" % FrontSensor, RightSensor, LeftSensor
+	print "{%i, %i, %i}" % (FrontSensor, RightSensor, LeftSensor)
 	#print "Front sensor = ", frindo.read_front_ir_sensor()
 
 	# request to read Right IR sensor (analog sensor 1)
