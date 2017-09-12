@@ -61,9 +61,11 @@ def driveToStop():
 def driveAround():
 	for x in range(0,10):
 		driveToStop()
-		if frindo.read_right_ir_sensor() < 250:
+		RightSensor = frindo.read_right_ir_sensor()
+		LeftSensor = frindo.read_left_ir_sensor()
+		if RightSensor < LeftSensor:
 			turnRobot(90)
-		elif frindo.read_left_ir_sensor() <250:
+		else:
 			turnRobot(-90)
 
 driveAround()
