@@ -23,7 +23,8 @@ sleep(1)
 
 
 def convertDistanceToCM(distance):
-	return (-0.1445*distance+69.76)
+	distanceReturn = int(round((-0.1445*distance+69.76)))
+	return distanceReturn
 
 def driveRobot(cm): #Sleep(4) for 100cm
 	leftSpeed = 129
@@ -72,7 +73,7 @@ def driveAround():
 		else:
 			turnRobot(-90)
 
-convertDistanceToCM(frindo.read_front_ir_sensor)
+print "cm: " convertDistanceToCM(frindo.read_front_ir_sensor)
 
 
 print frindo.stop()
