@@ -54,7 +54,12 @@ def driveToStop():
 	while frindo.read_front_ir_sensor() < 250:
 		driveRobot(5)
 
-driveToStop()
+def driveAround():
+	for x in range(1,11):
+		driveToStop()
+		turnRobot(90)
+
+driveAround()
 
 
 print frindo.stop()
