@@ -21,8 +21,16 @@ LeftSensor = 0
 
 sleep(1)
 
-def convertDistanceToCM(distance):
-	distanceReturn = int(round((79.943427 * (0.9953660709**distance))))
+def convertFrontDistanceToCM(distance):
+	distanceReturn = int(round((79.943427 * (0.9953660709 ** distance))))
+	return distanceReturn
+
+def convertRightDistanceToCM(distance):
+	distanceReturn = int(round((85.60176169 * (0.995149692 ** distance))))
+	return distanceReturn
+
+def convertLeftDistanceToCM(distance):
+	distanceReturn = int(round((90.5118426 * (0.9951333544 ** distance))))
 	return distanceReturn
 
 def driveRobot(cm): #Sleep(4) for 100cm
@@ -71,8 +79,7 @@ def driveAround():
 			turnRobot(90)
 		else:
 			turnRobot(-90)
-FrontSensor = frindo.read_front_ir_sensor()
-print ("%d - %d", FrontSensor, convertDistanceToCM(FrontSensor))
+
 
 
 print frindo.stop()
