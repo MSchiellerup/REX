@@ -36,9 +36,13 @@ def driveSquared():
 def driveNumber8():
 	speedConst = 1.305
 	leftSpeed = 120
-	print frindo.go_diff(leftSpeed/2, int(round(speedConst * leftSpeed)), 1, 1)	#hojre
+	print frindo.go_diff(leftSpeed/2, int(round(speedConst * leftSpeed)), 1, 1)	#venstre
 	sleep(2)
-	print frindo.go_diff(leftSpeed, int(round((speedConst * leftSpeed)/2)), 1, 1)	#venstre
+	print frindo.go_diff(leftSpeed, int(round((speedConst * leftSpeed)/2)), 1, 1)	#højre
+	sleep(2)
+	print frindo.go_diff(leftSpeed, int(round((speedConst * leftSpeed)/2)), 1, 1)	#højre
+	sleep(2)
+	print frindo.go_diff(leftSpeed/2, int(round(speedConst * leftSpeed)), 1, 1)	#venstre
 	sleep(2)
 #speedConst = 1.305
 #print frindo.go_diff(200,int(round(100*speedConst)),1,1)
