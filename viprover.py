@@ -21,9 +21,8 @@ LeftSensor = 0
 
 sleep(1)
 
-
 def convertDistanceToCM(distance):
-	distanceReturn = int(round((-0.1445*distance+69.76)))
+	distanceReturn = int(round((542.548958 * (0.967907915**distance))))
 	return distanceReturn
 
 def driveRobot(cm): #Sleep(4) for 100cm
