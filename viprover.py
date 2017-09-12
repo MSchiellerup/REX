@@ -14,6 +14,10 @@ print frindo.set_turnspeed(121)
 print frindo.set_step_time(1200)
 print frindo.set_turn_time(1000)
 
+FrontSensor = 0
+RightSensor = 0
+LeftSensor = 0
+
 sleep(1)
 
 def driveRobot(cm): #Sleep(4) for 100cm
@@ -45,7 +49,7 @@ def driveNumber8():
 	print frindo.go_diff(leftSpeed/2, int(round(speedConst * leftSpeed)), 1, 1)	#venstre
 	sleep(2)
 
-for x in range(1,5): 
+for x in range(1,11): 
 	# request to read Front IR sensor (analog sensor 0)
 	print "Front sensor = ", frindo.read_front_ir_sensor()
 
