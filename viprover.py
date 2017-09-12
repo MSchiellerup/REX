@@ -51,8 +51,8 @@ def driveNumber8():
 	sleep(2)
 
 def driveToStop():
-	while frindo.read_front_ir_sensor() < 480:
-		driveRobot(10)
+	while frindo.read_front_ir_sensor() < 250:
+		driveRobot(5)
 
 driveToStop()
 
