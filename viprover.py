@@ -55,7 +55,7 @@ def driveNumber8():
 	sleep(2)
 
 def driveToStop():
-	while frindo.read_front_ir_sensor() < 250 or frindo.read_right_ir_sensor() < 250 or frindo.read_left_ir_sensor() < 245:
+	while frindo.read_front_ir_sensor() < 250 and frindo.read_right_ir_sensor() < 250 and frindo.read_left_ir_sensor() < 245:
 		driveRobot(5)
 
 def driveAround():
