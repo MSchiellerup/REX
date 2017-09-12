@@ -14,6 +14,7 @@ print frindo.set_turnspeed(121)
 print frindo.set_step_time(1200)
 print frindo.set_turn_time(1000)
 
+
 FrontSensor = 0
 RightSensor = 0
 LeftSensor = 0
@@ -50,14 +51,19 @@ def driveNumber8():
 	sleep(2)
 
 for x in range(1,11): 
+	FrontSensor = frindo.read_front_ir_sensor()
+	RightSensor = frindo.read_right_ir_sensor()
+	LeftSensor = frindo.read_left_ir_sensor()
+
 	# request to read Front IR sensor (analog sensor 0)
-	print "Front sensor = ", frindo.read_front_ir_sensor()
+	print "{%i, %i, %i}" % FrontSensor, RightSensor, LeftSensor
+	#print "Front sensor = ", frindo.read_front_ir_sensor()
 
 	# request to read Right IR sensor (analog sensor 1)
-	print "Right sensor = ", frindo.read_right_ir_sensor()
+	#print "Right sensor = ", frindo.read_right_ir_sensor()
 
 	# request to read Left IR sensor (analog sensor 2)
-	print "Left sensor = ", frindo.read_left_ir_sensor()
+	#print "Left sensor = ", frindo.read_left_ir_sensor()
 
 
 print frindo.stop()
