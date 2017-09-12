@@ -29,8 +29,12 @@ def driveRobot(cm): #Sleep(4) for 100cm
 	sleep(cm/25)
 
 def turnRobot(grader):
-	print frindo.right()
-	sleep((2.4/360)*grader)
+	if grader > 0:
+		print frindo.right()
+		sleep((2.4/360)*grader)
+	else:
+		print frindo.left()
+		sleep((2.4/360)*(-grader))
 
 def driveSquared():
 	for x in range(1,5):
@@ -51,13 +55,16 @@ def driveNumber8():
 	sleep(2)
 
 def driveToStop():
-	while frindo.read_front_ir_sensor() < 250:
+	while frindo.read_front_ir_sensor() < 250 or frindo.read_right_ir_sensor() < 250 or frindo.read_left_ir_sensor() < 245:
 		driveRobot(5)
 
 def driveAround():
-	for x in range(1,11):
+	for x in range(0,10):
 		driveToStop()
-		turnRobot(90)
+		if frindo.read_right_ir_sensor() < 250:
+			turnRobot(90)
+		elif frindo.read_left_ir_sensor() <250:
+			turnRobot(90)
 
 driveAround()
 
