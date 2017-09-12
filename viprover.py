@@ -21,8 +21,6 @@ LeftSensor = 0
 
 sleep(1)
 
-Y = -0.1445*X + 69.76
-
 
 def convertDistanceToCM(distance):
 	return (-0.1445*distance+69.76)
