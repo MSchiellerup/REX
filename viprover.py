@@ -37,7 +37,7 @@ def driveNumber8():
 	speedConst = 1.305
 	leftSpeed = 120
 	print	frindo.go_diff(leftSpeed,int(round(leftSpeed*2)),1,1) #drej venstre
-	print frindo.go_diff(leftSpeed*2,int(round(leftSpeed)),1,1) #drej høhre
+	print frindo.go_diff(leftSpeed*2,int(round(leftSpeed)),1,1) #drej hohre
 #speedConst = 1.305
 #print frindo.go_diff(200,int(round(100*speedConst)),1,1)
 driveNumber8()
