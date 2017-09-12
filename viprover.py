@@ -73,7 +73,7 @@ def driveAround():
 		else:
 			turnRobot(-90)
 FrontSensor = frindo.read_front_ir_sensor()
-print "cm: %i" (convertDistanceToCM(FrontSensor))
+print "cm: %d" (convertDistanceToCM(FrontSensor))
 
 
 print frindo.stop()
