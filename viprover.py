@@ -32,7 +32,6 @@ def driveSquared():
 		driveRobot(100)
 		turnRobot(90)
 
-
 def driveNumber8():
 	speedConst = 1.305
 	leftSpeed = 120
@@ -42,14 +41,18 @@ def driveNumber8():
 	sleep(2)
 	print frindo.go_diff(leftSpeed, int(round((speedConst * leftSpeed)/2)), 1, 1)	#hojre
 	sleep(2)
-	driveRobot(50)
+	#driveRobot(50)
 	print frindo.go_diff(leftSpeed/2, int(round(speedConst * leftSpeed)), 1, 1)	#venstre
 	sleep(2)
-#speedConst = 1.305
-#print frindo.go_diff(200,int(round(100*speedConst)),1,1)
-driveNumber8()
-#sleep(10)
 
+# request to read Front IR sensor (analog sensor 0)
+print "Front sensor = ", frindo.read_front_ir_sensor()
+
+# request to read Right IR sensor (analog sensor 1)
+#print "Right sensor = ", frindo.read_right_ir_sensor()
+
+# request to read Left IR sensor (analog sensor 2)
+#print "Left sensor = ", frindo.read_left_ir_sensor()
 
 
 print frindo.stop()
