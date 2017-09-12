@@ -54,5 +54,7 @@ def driveToStop():
 	while frindo.read_front_ir_sensor() < 480:
 		driveRobot(10)
 
+driveToStop()
+
 
 print frindo.stop()
