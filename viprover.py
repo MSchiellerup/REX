@@ -64,7 +64,7 @@ def driveAround():
 		if frindo.read_right_ir_sensor() < 250:
 			turnRobot(90)
 		elif frindo.read_left_ir_sensor() <250:
-			turnRobot(90)
+			turnRobot(-90)
 
 driveAround()
 
