@@ -121,6 +121,9 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# grab the raw NumPy array representing the image
 	image = frame.array
  
+	x,y,w,h = cv2.boundingRect(cnt)
+	cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
+
 	# show the frame
 	cv2.imshow(WIN_RF, image)
 	key = cv2.waitKey(4) & 0xFF
