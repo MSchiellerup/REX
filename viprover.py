@@ -120,6 +120,10 @@ time.sleep(0.1)
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	# grab the raw NumPy array representing the image
 	image = frame.array
+
+	ret,thresh = cv2.threshold(image,127,255,0)
+	im2,contours,hierarchy = cv2.findContours(thresh, 1, 2)
+	cnt = contours[0]
  
 	x,y,w,h = cv2.boundingRect(cnt)
 	cv2.rectangle(img,(x,y),(x+w,y+h),(0,255,0),2)
