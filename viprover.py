@@ -86,68 +86,51 @@ def driveAround():
 		else:
 			turnRobot(-90)
 
-from pkg_resources import parse_version
-OPCV3 = parse_version(cv2.__version__) >= parse_version('3')
+# initialize the camera and grab a reference to the raw camera capture
+camera = PiCamera()
+time.sleep(1) # Wait for camera
 
-def capPropId(prop):
-    """returns OpenCV VideoCapture property id given, e.g., "FPS
-       This is needed because of differences in the Python interface in OpenCV 2.4 and 3.0
-    """
-    return getattr(cv2 if OPCV3 else cv2.cv, ("" if OPCV3 else "CV_") + "CAP_PROP_" + prop)
-    
-    
+camera.resolution = (640, 480)
+camera.framerate = 30
 
-# Define some constants
-lowThreshold=35;
-ratio = 3;
-kernel_size = 3;
+camera.shutter_speed = camera.exposure_speed
+camera.exposure_mode = 'off'
 
+gain = camera.awb_gains
+camera.awb_mode='off'
+#gain = (Fraction(2,1), Fraction(1,1))
+#gain = (1.5, 1.5)
+camera.awb_gains = gain
 
-# Open a camera device for capturing
-cam = cv2.VideoCapture(0);
+print "shutter_speed = ", camera.shutter_speed
+print "awb_gains = ", gain
 
-if not cam.isOpened(): # Error
-    print "Could not open camera";
-    exit(-1);
-    
-# Get camera properties
-width = int(cam.get(capPropId("FRAME_WIDTH"))); 
-height = int(cam.get(capPropId("FRAME_HEIGHT")));
-        
-    
+rawCapture = PiRGBArray(camera, size=camera.resolution)
+ 
 # Open a window
-WIN_RF = "Eksempel 2";
+WIN_RF = "Frame";
 cv2.namedWindow(WIN_RF);
-cv2.moveWindow(WIN_RF, 100       , 0);
+cv2.moveWindow(WIN_RF, 100       , 100);
 
 
-# Preallocate memory
-#gray_frame = np.zeros((height, width), dtype=np.uint8);
-
-while cv2.waitKey(4) == -1: # Wait for a key pressed event
-    retval, frameReference = cam.read() # Read frame
-    
-    if not retval: # Error
-        print " < < <  Game over!  > > > ";
-        exit(-1);
-    
-    # Convert the image to grayscale
-    gray_frame = cv2.cvtColor( frameReference, cv2.COLOR_BGR2GRAY );
-    
-    # Reduce noise with a kernel 3x3
-    edge_frame = cv2.blur( gray_frame, (3,3) );
-
-    # Canny detector
-    cv2.Canny( edge_frame, lowThreshold, lowThreshold*ratio, edge_frame, kernel_size );
-    
-    # Show frames
-    cv2.imshow(WIN_RF, edge_frame);
-    
-# Close all windows
-cv2.destroyAllWindows()
-
-# Finished successfully
-
+# allow the camera to warmup
+time.sleep(0.1)
+ 
+# capture frames from the camera
+for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+	# grab the raw NumPy array representing the image
+	image = frame.array
+ 
+	# show the frame
+	cv2.imshow(WIN_RF, image)
+	key = cv2.waitKey(4) & 0xFF
+ 
+	# clear the stream in preparation for the next frame
+	rawCapture.truncate(0)
+ 
+	# if the `q` key was pressed, break from the loop
+	if key == ord("q"):
+		break
 
 
 print frindo.stop()
