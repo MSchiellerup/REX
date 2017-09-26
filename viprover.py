@@ -113,6 +113,9 @@ WIN_RF = "PiCam";
 cv2.namedWindow(WIN_RF);
 cv2.moveWindow(WIN_RF, 100, 100);
 
+#Green boundaries
+greenLower = (29, 86, 6)
+greenUpper = (64, 255, 255)
 
 # allow the camera to warmup
 time.sleep(0.1)
@@ -120,45 +123,12 @@ time.sleep(0.1)
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	# grab the raw NumPy array representing the image
-	img = frame.array
+	image = frame.array
  	
- 	# threshold image
-	ret, threshed_img = cv2.threshold(cv2.cvtColor(img, cv2.COLOR_BGR2GRAY),
-	                127, 255, cv2.THRESH_BINARY)
-	# find contours and get the external one
-	image, contours, hier = cv2.findContours(threshed_img, cv2.RETR_TREE,
-	                cv2.CHAIN_APPROX_SIMPLE)
-	 
-	# with each contour, draw boundingRect in green
-	# a minAreaRect in red and
-	# a minEnclosingCircle in blue
-	for c in contours:
-	    # get the bounding rect
-	    x, y, w, h = cv2.boundingRect(c)
-	    # draw a green rectangle to visualize the bounding rect
-	    cv2.rectangle(img, (x, y), (x+w, y+h), (0, 255, 0), 2)
-	 
-	    # get the min area rect
-	    rect = cv2.minAreaRect(c)
-	    box = cv2.boxPoints(rect)
-	    # convert all coordinates floating point values to int
-	    box = np.int0(box)
-	    # draw a red 'nghien' rectangle
-	    cv2.drawContours(img, [box], 0, (0, 0, 255))
-	 
-	    # finally, get the min enclosing circle
-	    (x, y), radius = cv2.minEnclosingCircle(c)
-	    # convert all values to int
-	    center = (int(x), int(y))
-	    radius = int(radius)
-	    # and draw the circle in blue
-	    img = cv2.circle(img, center, radius, (255, 0, 0), 2)
-	 
-	print(len(contours))
-	cv2.drawContours(img, contours, -1, (255, 255, 0), 1)
-
+ 	mask = cv2.inRange(image, lower, upper)
+ 	output = cv2.bitwise_and(image, image, mask = mask)
 	# show the frame
-	cv2.imshow(WIN_RF, img)
+	cv2.imshow(WIN_RF, np.hstack([image, output]))
 	key = cv2.waitKey(1) & 0xFF
  
 	# clear the stream in preparation for the next frame
@@ -167,6 +137,10 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# if the `q` key was pressed, break from the loop
 	if key == ord("q"):
 		break
+
+
+
+
 
 
 
