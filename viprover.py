@@ -107,11 +107,11 @@ print "shutter_speed = ", camera.shutter_speed
 print "awb_gains = ", gain
 
 rawCapture = PiRGBArray(camera, size=camera.resolution)
-print("hej")
+
 # Open a window
-WIN_RF = "Frame";
-cv2.namedWindow(WIN_RF);
-cv2.moveWindow(WIN_RF, 100       , 100);
+WIN_RF = "Frame"
+cv2.namedWindow(WIN_RF)
+cv2.moveWindow(WIN_RF, 100       , 100)
 
 
 # allow the camera to warmup
