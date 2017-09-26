@@ -87,13 +87,6 @@ def driveAround():
 			turnRobot(-90)
 
 
-# define the list of boundaries
-boundaries = [
-	([17, 15, 100], [50, 56, 200]),
-	([86, 31, 4], [220, 88, 50]),
-	([25, 146, 190], [62, 174, 250]),
-	([103, 86, 65], [145, 133, 128])
-]
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
 time.sleep(1) # Wait for camera
@@ -116,9 +109,9 @@ print "awb_gains = ", gain
 rawCapture = PiRGBArray(camera, size=camera.resolution)
  
 # Open a window
-WIN_RF = "Frame";
+WIN_RF = "PiCam";
 cv2.namedWindow(WIN_RF);
-cv2.moveWindow(WIN_RF, 100       , 100);
+cv2.moveWindow(WIN_RF, 100, 100);
 
 
 # allow the camera to warmup
@@ -128,23 +121,10 @@ time.sleep(0.1)
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	# grab the raw NumPy array representing the image
 	image = frame.array
-	# loop over the boundaries
-	for (lower, upper) in boundaries:
-		# create NumPy arrays from the boundaries
-		lower = np.array(lower, dtype = "uint8")
-		upper = np.array(upper, dtype = "uint8")
-	 
-		# find the colors within the specified boundaries and apply
-		# the mask
-		mask = cv2.inRange(image, lower, upper)
-		output = cv2.bitwise_and(image, image, mask = mask)
-	 
-		# show the images
-		cv2.imshow(WIN_RF, np.hstack([image, output]))
-		cv2.waitKey(0)
+ 
 	# show the frame
-	#cv2.imshow(WIN_RF, image)
-	#key = cv2.waitKey(4) & 0xFF
+	cv2.imshow(WIN_RF, image)
+	key = cv2.waitKey(0.1) & 0xFF
  
 	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
