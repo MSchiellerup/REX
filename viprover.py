@@ -116,7 +116,7 @@ cv2.moveWindow(WIN_RF, 100       , 100);
 
 # allow the camera to warmup
 time.sleep(0.1)
- 
+print("Hej")
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	# grab the raw NumPy array representing the image
