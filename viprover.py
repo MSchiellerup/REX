@@ -109,11 +109,13 @@ print "awb_gains = ", gain
 rawCapture = PiRGBArray(camera, size=camera.resolution)
 
 # Open a window
+print "1"
 WIN_RF = "Frame"
+print "2"
 cv2.namedWindow(WIN_RF)
-cv2.moveWindow(WIN_RF, 100       , 100)
-
-
+print "3"
+cv2.moveWindow(WIN_RF, 100, 100)
+print "4"
 # allow the camera to warmup
 time.sleep(0.1)
 
