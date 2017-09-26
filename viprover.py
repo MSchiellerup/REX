@@ -125,7 +125,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# grab the raw NumPy array representing the image
 	image = frame.array
  	
- 	mask = cv2.inRange(image, lower, upper)
+ 	mask = cv2.inRange(image, greenLower, greenUpper)
  	output = cv2.bitwise_and(image, image, mask = mask)
 	# show the frame
 	cv2.imshow(WIN_RF, np.hstack([image, output]))
