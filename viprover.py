@@ -99,7 +99,7 @@ def fpsopencv(dat):
 imgs = (rand(Nf,xy[0],xy[1])*255).astype(uint8)
 fps = fpsopencv(imgs)
 
-print(f"{fps} fps")
+print("%d fps",fps)
 
 
 print frindo.stop()
