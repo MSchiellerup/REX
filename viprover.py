@@ -86,7 +86,7 @@ def driveAround():
 		else:
 			turnRobot(-90)
 
-rom pkg_resources import parse_version
+from pkg_resources import parse_version
 OPCV3 = parse_version(cv2.__version__) >= parse_version('3')
 
 def capPropId(prop):
