@@ -90,7 +90,7 @@ def driveAround():
 camera = PiCamera()
 camera.resolution = (640, 480)
 camera.framerate = 50
-camera.hflip = True
+#camera.hflip = True
 
 #gain = camera.awb_gains
 #camera.awb_mode='off'
