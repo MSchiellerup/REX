@@ -100,6 +100,7 @@ camera.iso = 400
 
 camera.shutter_speed = camera.exposure_speed
 camera.exposure_mode = 'off'
+camera.brightness = 70
 
 rawCapture = PiRGBArray(camera, size=(640, 480))
  
