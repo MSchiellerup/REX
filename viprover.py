@@ -121,7 +121,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	#thresh2 = thresh.copy()
 
 	# find contours in the threshold image
-	image, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+	img, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 
 	# finding contour with maximum area and store it as best_cnt
 	max_area = 0
