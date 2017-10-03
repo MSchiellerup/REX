@@ -195,10 +195,10 @@ def cake():
 		sleep(2)
 		rounds = rounds + 1
 
-for i in range(0,13):
+for i in range(0,12):
 	print frindo.set_turnspeed(150)
 	print frindo.right()
-	sleep(0.1)
+	sleep(0.15)
 	print frindo.set_turnspeed(30)
 	print frindo.right()
 
