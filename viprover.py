@@ -180,8 +180,8 @@ def locateAndTurn():
 			print "Drej Hojre"
 			return (10)
 	return 0
-int i = 1
-while i < 10:
+rounds = 1
+while rounds < 10:
 	turn = locateAndTurn()
 	sleep(6)
 	if turn == 0:
@@ -189,7 +189,7 @@ while i < 10:
 	else:
 		turnRobot(turn)
 	sleep(2)
-	i = i + 1
+	rounds = rounds + 1
 
 
 
