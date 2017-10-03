@@ -79,15 +79,15 @@ def driveRobot(cm): #Sleep(4) for 100cm
 	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
 	sleep(cm/25)
 
-def turnRobot(grader):
-	runde = 36
-
-	if grader > 0:
+def turnRobot(grader): #360/12 = 30
+	runde = 30
+	drej = int(round(grader/30))
+	for i in range(0,drej):
+		print frindo.set_turnspeed(150)
 		print frindo.right()
-		sleep((2.4/360)*grader)
-	else:
-		print frindo.left()
-		sleep((2.4/360)*(-grader))
+		sleep(0.11)
+		print frindo.set_turnspeed(30)
+		print frindo.right()
 
 def driveSquared():
 	for x in range(1,5):
@@ -195,12 +195,9 @@ def cake():
 		sleep(2)
 		rounds = rounds + 1
 
-for i in range(0,12):
-	print frindo.set_turnspeed(150)
-	print frindo.right()
-	sleep(0.11)
-	print frindo.set_turnspeed(30)
-	print frindo.right()
+turnRobot(60)
+turnRobot(140)
+turnRobot(360)
 
 
 print frindo.stop()
