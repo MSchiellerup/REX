@@ -139,6 +139,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	cv2.circle(blur,(cx,cy),10,(0,0,255),-1)
 	# show the frame
 	cv2.imshow("Frame", blur)
+	print ("x = %d, y =  %d", cx, cy)
 	#cv2.imshow('thresh',thresh2)
 	key = cv2.waitKey(1) & 0xFF
 	 
