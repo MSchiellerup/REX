@@ -80,13 +80,23 @@ def driveRobot(cm): #Sleep(4) for 100cm
 	sleep(cm/25)
 
 def turnRobot(grader): #360/12 = 30
-	turn = (1.8/360)*grader
-	print frindo.set_turnspeed(170)
-	print frindo.right()
-	sleep(0.01)
-	print frindo.set_turnspeed(90)
-	print frindo.right()
-	sleep(turn)
+	
+	if grader < 0:
+		turn = (1.8/360)*(-grader)
+		print frindo.set_turnspeed(170)
+		print frindo.left()
+		sleep(0.01)
+		print frindo.set_turnspeed(90)
+		print frindo.left()
+		sleep(turn)
+	else:
+		turn = (1.8/360)*grader
+		print frindo.set_turnspeed(170)
+		print frindo.right()
+		sleep(0.01)
+		print frindo.set_turnspeed(90)
+		print frindo.right()
+		sleep(turn)
 
 def driveSquared():
 	for x in range(1,5):
