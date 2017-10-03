@@ -121,9 +121,12 @@ def driveAround():
 
 aveX = 0
 aveY = 0
+images = 0 
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+	images = images + 1
+	
 	image = frame.array
-	print frame
+
 	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
 	#blur = cv2.blur(image, (3,3))
 
@@ -156,7 +159,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
   	key = cv2.waitKey(6) & 0xFF
   	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
-	if frame == 5:
+	if images == 5:
 		break
 
 
