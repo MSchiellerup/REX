@@ -117,7 +117,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	greenUpper = np.array([64, 255, 255])
 
 	thresh = cv2.inRange(blur, greenLower, greenUpper)
-  thresh2 = thresh.copy()
+  #thresh2 = thresh.copy()
 
   # find contours in the threshold image
   image, contours,hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
