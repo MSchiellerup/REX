@@ -139,8 +139,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	#if best_cnt>1:
 	cv2.circle(thresh,(cx,cy),10,(0,0,255),-1)
 	# show the frame
-	#output = cv2.bitwise_and(image, image, mask = thresh)
-	cv2.imshow("Frame", np.hstack([image, hsv]))
+	output = cv2.bitwise_and(image, image, mask = thresh)
+	cv2.imshow("Frame", np.hstack([image, output]))
 	#cv2.imshow("Frame", hsv)
 	print ("x = %d, y =  %d", cx, cy)
 	#cv2.imshow('thresh',thresh2)
