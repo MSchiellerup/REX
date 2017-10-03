@@ -196,8 +196,11 @@ def cake():
 		rounds = rounds + 1
 
 turnRobot(60)
+sleep(5)
 turnRobot(140)
+sleep(5)
 turnRobot(360)
+sleep(5)
 
 
 print frindo.stop()
