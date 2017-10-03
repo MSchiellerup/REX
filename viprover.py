@@ -123,7 +123,7 @@ aveX = 0
 aveY = 0
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	image = frame.array
-
+	print frame
 	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
 	#blur = cv2.blur(image, (3,3))
 
@@ -152,7 +152,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
   	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
   	aveY = aveY + cy
   	aveX = aveX + cx
-  	
+
   	key = cv2.waitKey(6) & 0xFF
   	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
