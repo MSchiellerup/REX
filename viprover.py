@@ -119,64 +119,70 @@ def driveAround():
 		else:
 			turnRobot(-90)
 
-aveX = 0
-aveY = 0
-images = 0 
-for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-	images = images + 1
+def locateAndTurn():
+	aveX = 0
+	aveY = 0
+	images = 0 
+	for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+		images = images + 1
 
-	image = frame.array
+		image = frame.array
 
-	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
-	#blur = cv2.blur(image, (3,3))
+		hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
+		#blur = cv2.blur(image, (3,3))
 
-	greenLower = np.array([29, 86, 6])
-	greenUpper = np.array([64, 255, 255])
+		greenLower = np.array([29, 86, 6])
+		greenUpper = np.array([64, 255, 255])
 
-	thresh = cv2.inRange(hsv, greenLower, greenUpper)
-	#thresh2 = thresh.copy()
+		thresh = cv2.inRange(hsv, greenLower, greenUpper)
+		#thresh2 = thresh.copy()
 
-	# find contours in the threshold image
-	img, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+		# find contours in the threshold image
+		img, contours, hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
 
-	# finding contour with maximum area and store it as best_cnt
-	max_area = 0
-	best_cnt = 1
-	for cnt in contours:
-	 	area = cv2.contourArea(cnt)
-	    	if area > max_area:
-	      		max_area = area
-	      		best_cnt = cnt
-
-
-	# finding centroids of best_cnt and draw a circle there
-  	M = cv2.moments(best_cnt)
-
-  	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
-  	aveY = aveY + cy
-  	aveX = aveX + cx
-
-  	key = cv2.waitKey(6) & 0xFF
-  	# clear the stream in preparation for the next frame
-	rawCapture.truncate(0)
-	if images == 5:
-		break
+		# finding contour with maximum area and store it as best_cnt
+		max_area = 0
+		best_cnt = 1
+		for cnt in contours:
+		 	area = cv2.contourArea(cnt)
+		    	if area > max_area:
+		      		max_area = area
+		      		best_cnt = cnt
 
 
-aveX = aveX / 5
-aveY = aveY / 5
+		# finding centroids of best_cnt and draw a circle there
+	  	M = cv2.moments(best_cnt)
 
-print("X = %d, Y = %d", aveX, aveY)
-if aveX < (midx-10) or aveX > (midx+10):
-	if aveX < midx:
-		#Turn left
-		#turnRobot(-10)
-		print "Drej venstre"
-	else:
-		#turn right
-		#turnRobot(10)
-		print "Drej Hojre"
+	  	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
+	  	aveY = aveY + cy
+	  	aveX = aveX + cx
 
+	  	key = cv2.waitKey(6) & 0xFF
+	  	# clear the stream in preparation for the next frame
+		rawCapture.truncate(0)
+		if images == 5:
+			break
+
+
+	aveX = aveX / 5
+	aveY = aveY / 5
+
+	print("X = %d, Y = %d", aveX, aveY)
+	if aveX < (midx-10) or aveX > (midx+10):
+		if aveX < midx:
+			#Turn left
+			#turnRobot(-10)
+			print "Drej venstre"
+		else:
+			#turn right
+			#turnRobot(10)
+			print "Drej Hojre"
+		return 0
+	return 1
+
+
+faerdig = locateAndTurn()
+print faerdig
 
 
 print frindo.stop()
