@@ -89,14 +89,17 @@ def driveAround():
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
 camera.resolution = (640, 480)
-camera.framerate = 50
-camera.hflip = True
+camera.framerate = 30
+#camera.hflip = True
 
 gain = camera.awb_gains
 camera.awb_mode='off'
 gain = (Fraction(349, 256), Fraction(375, 256))
 #gain = (1.5, 1.5)
 camera.awb_gains = gain
+
+camera.shutter_speed = camera.exposure_speed
+camera.exposure_mode = 'off'
 
 rawCapture = PiRGBArray(camera, size=(640, 480))
  
@@ -114,8 +117,6 @@ boundaries = [
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-	gain = (Fraction(349, 256), Fraction(375, 256))
-	camera.awb_gains = gain
 	#Grab the image
 	image = frame.array
 
