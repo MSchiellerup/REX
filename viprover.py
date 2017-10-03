@@ -137,7 +137,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
   	M = cv2.moments(best_cnt)
   	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
 	#if best_cnt>1:
-	cv2.circle(thresh,(cx,cy),10,(0,0,255),-1)
+	cv2.circle(image,(cx,cy),10,(0,0,255),-1)
 	# show the frame
 	output = cv2.bitwise_and(image, image, mask = thresh)
 	cv2.imshow("Frame", np.hstack([image, output]))
