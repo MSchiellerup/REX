@@ -173,12 +173,13 @@ def locateAndTurn():
 			#Turn left
 			#turnRobot(-10)
 			print "Drej venstre"
+			return (-10)
 		else:
 			#turn right
 			#turnRobot(10)
 			print "Drej Hojre"
-		return 0
-	return 1
+			return (10)
+	return 0
 
 
 faerdig = locateAndTurn()
