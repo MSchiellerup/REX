@@ -114,6 +114,8 @@ boundaries = [
 
 # capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+	gain = (Fraction(349, 256), Fraction(375, 256))
+	camera.awb_gains = gain
 	#Grab the image
 	image = frame.array
 
