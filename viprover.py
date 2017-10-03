@@ -180,7 +180,7 @@ def locateAndTurn():
 			print "Drej Hojre"
 			return (10)
 	return 0
-
+int i = 1
 while i < 10:
 	turn = locateAndTurn()
 	sleep(6)
