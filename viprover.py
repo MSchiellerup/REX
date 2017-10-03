@@ -99,7 +99,7 @@ camera.hflip = True
 #camera.awb_gains = gain
 
 camera.shutter_speed = camera.exposure_speed
-camera.exposure_mode = 'off'
+camera.exposure_mode = 'auto'
 
 rawCapture = PiRGBArray(camera, size=(640, 480))
  
