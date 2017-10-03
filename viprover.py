@@ -97,8 +97,8 @@ def detectGreenBox():
 	camera.framerate = 30
 
 	# get the current center of the image
-  int midx = 320
-  int midy = 240
+  #int midx = 320
+  #int midy = 240
 
 	camera.shutter_speed = camera.exposure_speed
 	camera.exposure_mode = 'off'
