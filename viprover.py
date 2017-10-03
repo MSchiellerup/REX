@@ -148,9 +148,11 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 	# finding centroids of best_cnt and draw a circle there
   	M = cv2.moments(best_cnt)
+
+  	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
   	aveY = aveY + cy
   	aveX = aveX + cx
-  	#cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
+  	
   	key = cv2.waitKey(6) & 0xFF
   	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
