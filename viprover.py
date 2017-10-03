@@ -25,6 +25,39 @@ FrontSensor = 0
 RightSensor = 0
 LeftSensor = 0
 
+# initialize the camera and grab a reference to the raw camera capture
+camera = PiCamera()
+camera.resolution = (640, 480)
+camera.framerate = 50
+#camera.hflip = True
+
+#gain = camera.awb_gains
+#camera.awb_mode='off'
+#camera.awb_gains = gain
+
+camera.iso = 400
+
+camera.shutter_speed = camera.exposure_speed
+camera.exposure_mode = 'off'
+camera.brightness = 60
+
+rawCapture = PiRGBArray(camera, size=(640, 480))
+ 
+# allow the camera to warmup
+time.sleep(0.1)
+
+# Boundaries
+boundaries = [
+	([29, 86, 6], 	 [64, 255, 255]), # green
+	([17, 15, 100],  [50, 56, 200]),  # red
+	([86, 31, 4], 	 [220, 88, 50]),  # blue
+	([25, 146, 190], [62, 174, 250]), # yellow
+	([103, 86, 65],  [145, 133, 128]) # gray
+]
+
+midx = 320
+midy = 240
+
 sleep(1)
 
 def convertFrontDistanceToCM(distance):
@@ -86,39 +119,10 @@ def driveAround():
 		else:
 			turnRobot(-90)
 
-# initialize the camera and grab a reference to the raw camera capture
-camera = PiCamera()
-camera.resolution = (640, 480)
-camera.framerate = 50
-#camera.hflip = True
-
-#gain = camera.awb_gains
-#camera.awb_mode='off'
-#camera.awb_gains = gain
-
-camera.iso = 400
-
-camera.shutter_speed = camera.exposure_speed
-camera.exposure_mode = 'off'
-camera.brightness = 60
-
-rawCapture = PiRGBArray(camera, size=(640, 480))
- 
-# allow the camera to warmup
-time.sleep(0.1)
-
-# Boundaries
-boundaries = [
-	([29, 86, 6], 	 [64, 255, 255]), # green
-	([17, 15, 100],  [50, 56, 200]),  # red
-	([86, 31, 4], 	 [220, 88, 50]),  # blue
-	([25, 146, 190], [62, 174, 250]), # yellow
-	([103, 86, 65],  [145, 133, 128]) # gray
-]
-
-# capture frames from the camera
-for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-	#Grab the image
+aveX = 0
+aveY = 0
+for i in range(5):
+	frame = camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	image = frame.array
 
 	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
@@ -145,22 +149,19 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 
 	# finding centroids of best_cnt and draw a circle there
   	M = cv2.moments(best_cnt)
-  	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
-	#if best_cnt>1:
-	cv2.circle(image,(cx,cy),10,(0,0,255),-1)
-	# show the frame
-	output = cv2.bitwise_and(image, image, mask = thresh)
-	cv2.imshow("Frame", np.hstack([image, output]))
-	#cv2.imshow("Frame", hsv)
-	print ("x = %d, y =  %d", cx, cy)
-	#cv2.imshow('thresh',thresh2)
-	key = cv2.waitKey(6) & 0xFF
+  	aveY = aveY + cy
+  	aveX = aveX + cx
+  	#cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
+  	key = cv2.waitKey(6) & 0xFF
 	 
 	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
-	 
-		# if the `q` key was pressed, break from the loop
-	if key == ord("q"):
-		break
+
+aveX = aveX / 5
+aveY = aveY / 5
+
+print("X = %d, Y = %d", aveX, aveY)
+
+
 
 print frindo.stop()
