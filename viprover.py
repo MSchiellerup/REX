@@ -93,7 +93,7 @@ camera.framerate = 50
 camera.hflip = True
 
 gain = camera.awb_gains
-camera.awb_mode='off'
+#camera.awb_mode='off'
 #gain = (Fraction(2,1), Fraction(1,1))
 #gain = (1.5, 1.5)
 camera.awb_gains = gain
@@ -148,7 +148,8 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	output = cv2.bitwise_and(image, image, mask = thresh)
 	cv2.imshow("Frame", np.hstack([image, output]))
 	#cv2.imshow("Frame", hsv)
-	print ("x = %d, y =  %d", cx, cy)
+	#print ("x = %d, y =  %d", cx, cy)
+	print camera.awb_gains
 	#cv2.imshow('thresh',thresh2)
 	key = cv2.waitKey(6) & 0xFF
 	 
