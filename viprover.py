@@ -80,6 +80,9 @@ def driveRobot(cm): #Sleep(4) for 100cm
 	sleep(cm/25)
 
 def turnRobot(grader): #360/12 = 30
+	turns 
+
+
 	runde = 30
 	drej = int(round(grader/30))
 	for i in range(0,drej):
@@ -200,7 +203,7 @@ print frindo.right()
 sleep(0.01)
 print frindo.set_turnspeed(90)
 print frindo.right()
-sleep(0.2)
+sleep(4.8)
 
 
 print frindo.stop()
