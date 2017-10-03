@@ -89,7 +89,7 @@ def driveAround():
 # initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
 camera.resolution = (640, 480)
-camera.framerate = 30
+camera.framerate = 50
 camera.hflip = True
 
 #gain = camera.awb_gains
