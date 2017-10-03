@@ -81,6 +81,10 @@ def driveRobot(cm): #Sleep(4) for 100cm
 
 def turnRobot(grader): #360/12 = 30
 	turn = (1.8/360)*grader
+	print frindo.set_turnspeed(170)
+	print frindo.right()
+	sleep(0.01)
+	print frindo.set_turnspeed(90)
 	print frindo.right()
 	sleep(turn)
 
@@ -190,7 +194,12 @@ def cake():
 		sleep(2)
 		rounds = rounds + 1
 
-turnRobot(360)
+print frindo.set_turnspeed(170)
+print frindo.right()
+sleep(0.01)
+print frindo.set_turnspeed(90)
+print frindo.right()
+sleep(1.8)
 
 
 print frindo.stop()
