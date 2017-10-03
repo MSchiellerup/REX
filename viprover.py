@@ -111,7 +111,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	#Grab the image
 	image = frame.array
 
-	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
+	hsv = cv2.cvtColor(image,cv2.COLOR_RGB2HSV)
 	#blur = cv2.blur(image, (3,3))
 
 	greenLower = np.array([29, 86, 6])
