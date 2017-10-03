@@ -194,12 +194,7 @@ def cake():
 		sleep(2)
 		rounds = rounds + 1
 
-print frindo.set_turnspeed(170)
-print frindo.right()
-sleep(0.01)
-print frindo.set_turnspeed(90)
-print frindo.right()
-sleep(1.8)
+turnRobot(360)
 
 
 print frindo.stop()
