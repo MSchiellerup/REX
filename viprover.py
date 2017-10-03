@@ -86,39 +86,18 @@ def driveAround():
 		else:
 			turnRobot(-90)
 
-#def detectGreenBox():
-#def activateCam():
-	# initialize the camera and grab a reference to the raw camera capture
+# initialize the camera and grab a reference to the raw camera capture
 camera = PiCamera()
-time.sleep(1) # Wait for camera
-
-# Setting resolution and fr for camera
 camera.resolution = (640, 480)
-camera.framerate = 30
+camera.framerate = 50
+camera.hflip = True
 
-# get the current center of the image
-#int midx = 320
-#int midy = 240
-
-camera.shutter_speed = camera.exposure_speed
-camera.exposure_mode = 'off'
-
-gain = camera.awb_gains
-camera.awb_mode='off'
-
-camera.awb_gains = gain
-
-print "shutter_speed = ", camera.shutter_speed
-print "awb_gains = ", gain
-
-rawCapture = PiRGBArray(camera, size=camera.resolution)
+rawCapture = PiRGBArray(camera, size=(640, 480))
  
-# Open a window
-WIN_RF = "PiCam";
-cv2.namedWindow(WIN_RF);
-cv2.moveWindow(WIN_RF, 100, 100);
+# allow the camera to warmup
+time.sleep(0.1)
 
-# define the list of boundaries
+# Boundaries
 boundaries = [
 	([29, 86, 6], 	 [64, 255, 255]), # green
 	([17, 15, 100],  [50, 56, 200]),  # red
@@ -127,43 +106,47 @@ boundaries = [
 	([103, 86, 65],  [145, 133, 128]) # gray
 ]
 
-greenLower = np.array([29, 86, 6])
-greenUpper = np.array([64, 255, 255])
-
-# allow the camera to warmup
-time.sleep(0.1)
-
+# capture frames from the camera
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-	# grab the raw NumPy array representing the image
+	#Grab the image
 	image = frame.array
-	# Convert to HSV
-	hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
-	# Threshhold hsv to only get green colour
-	mask = cv2.inRange(hsv, greenLower, greenUpper)
-	# Bitwise-AND mask and original image
-  res = cv2.bitwise_and(image,image, mask = mask)
 
- # capture frames from the camera
+	blur = cv2.blur(image, (3,3))
+
+	greenLower = np.array([29, 86, 6])
+	greenUpper = np.array([64, 255, 255])
+
+	thresh = cv2.inRange(blur, greenLower, greenUpper)
+  thresh2 = thresh.copy()
+
+  # find contours in the threshold image
+  image, contours,hierarchy = cv2.findContours(thresh,cv2.RETR_LIST,cv2.CHAIN_APPROX_SIMPLE)
+
+  # finding contour with maximum area and store it as best_cnt
+  max_area = 0
+  best_cnt = 1
+  for cnt in contours:
+    area = cv2.contourArea(cnt)
+    if area > max_area:
+      max_area = area
+      best_cnt = cnt
 
 
-	
-	#mask = cv2.inRange(image, greenLower, greenUpper)
-	#output = cv2.bitwise_and(image, image, mask = mask)
- # show the frame
-	cv2.imshow(WIN_RF, np.hstack([image, res]))
-	key = cv2.waitKey(4) & 0xFF
-
+  # finding centroids of best_cnt and draw a circle there
+  M = cv2.moments(best_cnt)
+  cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
+  #if best_cnt>1:
+  cv2.circle(blur,(cx,cy),10,(0,0,255),-1)
+  # show the frame
+  cv2.imshow("Frame", blur)
+  #cv2.imshow('thresh',thresh2)
+  key = cv2.waitKey(1) & 0xFF
+ 
 	# clear the stream in preparation for the next frame
-	rawCapture.truncate(0)
-
+  rawCapture.truncate(0)
+ 
 	# if the `q` key was pressed, break from the loop
-	if key == ord("q"):
-		break
-
-
-
-
-
-
+  if key == ord("q"):
+  	break
 
 print frindo.stop()
