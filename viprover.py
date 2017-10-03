@@ -181,9 +181,13 @@ def locateAndTurn():
 			return (10)
 	return 0
 
+while 1:
+	turn = locateAndTurn()
+	if turn == 0:
+		break
+	else
+		turnRobot(turn)
 
-faerdig = locateAndTurn()
-print faerdig
 
 
 print frindo.stop()
