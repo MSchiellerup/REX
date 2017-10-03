@@ -183,10 +183,12 @@ def locateAndTurn():
 
 while 1:
 	turn = locateAndTurn()
+	sleep(2)
 	if turn == 0:
 		break
 	else:
 		turnRobot(turn)
+	sleep(2)
 
 
 
