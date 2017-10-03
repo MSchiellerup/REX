@@ -121,8 +121,7 @@ def driveAround():
 
 aveX = 0
 aveY = 0
-for i in range(5):
-	frame = camera.capture_continuous(rawCapture, format="bgr", use_video_port=True)
+for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	image = frame.array
 
 	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
@@ -153,9 +152,11 @@ for i in range(5):
   	aveX = aveX + cx
   	#cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
   	key = cv2.waitKey(6) & 0xFF
-	 
-	# clear the stream in preparation for the next frame
+  	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
+	if frame = 5:
+		break
+
 
 aveX = aveX / 5
 aveY = aveY / 5
