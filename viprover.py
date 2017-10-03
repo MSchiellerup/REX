@@ -154,7 +154,7 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
   	key = cv2.waitKey(6) & 0xFF
   	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
-	if frame = 5:
+	if frame == 5:
 		break
 
 
