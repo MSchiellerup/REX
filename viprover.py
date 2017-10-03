@@ -124,7 +124,7 @@ aveY = 0
 images = 0 
 for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
 	images = images + 1
-	
+
 	image = frame.array
 
 	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
@@ -167,6 +167,15 @@ aveX = aveX / 5
 aveY = aveY / 5
 
 print("X = %d, Y = %d", aveX, aveY)
+if aveX < (midx-10) or aveX > (midx+10):
+	if aveX < midx:
+		#Turn left
+		#turnRobot(-10)
+		print "Drej venstre"
+	else:
+		#turn right
+		#turnRobot(10)
+		print "Drej Hojre"
 
 
 
