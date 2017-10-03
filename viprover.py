@@ -16,7 +16,7 @@ print("Running...")
 
 # Set speed
 print frindo.set_speed(70)
-print frindo.set_turnspeed(121)
+print frindo.set_turnspeed(20)
 print frindo.set_step_time(1200)
 print frindo.set_turn_time(1000)
 
@@ -180,17 +180,20 @@ def locateAndTurn():
 			print "Drej Hojre"
 			return (10)
 	return 0
-rounds = 1
-while rounds < 10:
-	turn = locateAndTurn()
-	sleep(6)
-	if turn == 0:
-		break
-	else:
-		turnRobot(turn)
-	sleep(2)
-	rounds = rounds + 1
 
+def cake():
+	rounds = 1
+	while rounds < 10:
+		turn = locateAndTurn()
+		sleep(6)
+		if turn == 0:
+			break
+		else:
+			turnRobot(turn)
+		sleep(2)
+		rounds = rounds + 1
+
+print frindo.right()
 
 
 print frindo.stop()
