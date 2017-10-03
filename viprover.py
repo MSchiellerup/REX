@@ -198,7 +198,7 @@ def cake():
 print frindo.set_turnspeed(150)
 print frindo.right()
 
-print frindo.set_turnspeed(50)
+print frindo.set_turnspeed(70)
 print frindo.right()
 sleep(6)
 
