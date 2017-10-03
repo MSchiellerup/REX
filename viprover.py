@@ -181,14 +181,15 @@ def locateAndTurn():
 			return (10)
 	return 0
 
-while 1:
+while i < 10:
 	turn = locateAndTurn()
-	sleep(2)
+	sleep(6)
 	if turn == 0:
 		break
 	else:
 		turnRobot(turn)
 	sleep(2)
+	i = i + 1
 
 
 
