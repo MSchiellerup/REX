@@ -93,8 +93,8 @@ camera.framerate = 50
 camera.hflip = True
 
 gain = camera.awb_gains
-#camera.awb_mode='off'
-#gain = (Fraction(2,1), Fraction(1,1))
+camera.awb_mode='off'
+gain = (Fraction(349, 256), Fraction(375, 256))
 #gain = (1.5, 1.5)
 camera.awb_gains = gain
 
