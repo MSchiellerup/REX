@@ -92,6 +92,12 @@ camera.resolution = (640, 480)
 camera.framerate = 50
 camera.hflip = True
 
+gain = camera.awb_gains
+camera.awb_mode='off'
+#gain = (Fraction(2,1), Fraction(1,1))
+#gain = (1.5, 1.5)
+camera.awb_gains = gain
+
 rawCapture = PiRGBArray(camera, size=(640, 480))
  
 # allow the camera to warmup
