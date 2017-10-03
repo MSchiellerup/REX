@@ -200,7 +200,7 @@ print frindo.right()
 sleep(0.01)
 print frindo.set_turnspeed(90)
 print frindo.right()
-sleep(0.4)
+sleep(0.2)
 
 
 print frindo.stop()
