@@ -87,7 +87,7 @@ def driveAround():
 			turnRobot(-90)
 
 def detectGreenBox():
-	def activateCam():
+	#def activateCam():
 		# initialize the camera and grab a reference to the raw camera capture
 		camera = PiCamera()
 		time.sleep(1) # Wait for camera
