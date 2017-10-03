@@ -185,7 +185,7 @@ while 1:
 	turn = locateAndTurn()
 	if turn == 0:
 		break
-	else
+	else:
 		turnRobot(turn)
 
 
