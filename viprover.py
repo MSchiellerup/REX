@@ -92,11 +92,9 @@ camera.resolution = (640, 480)
 camera.framerate = 30
 camera.hflip = True
 
-#gain = camera.awb_gains
-#camera.awb_mode='off'
-#gain = (Fraction(349, 256), Fraction(375, 256))
-#gain = (1.5, 1.5)
-#camera.awb_gains = gain
+gain = camera.awb_gains
+camera.awb_mode='off'
+camera.awb_gains = gain
 
 camera.shutter_speed = camera.exposure_speed
 camera.exposure_mode = 'auto'
