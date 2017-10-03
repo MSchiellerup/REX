@@ -96,7 +96,7 @@ camera.hflip = True
 #camera.awb_mode='off'
 #camera.awb_gains = gain
 
-camera.iso = 180
+camera.iso = 400
 
 camera.shutter_speed = camera.exposure_speed
 camera.exposure_mode = 'off'
