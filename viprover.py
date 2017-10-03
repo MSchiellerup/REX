@@ -166,9 +166,9 @@ def locateAndTurn():
 
 	aveX = aveX / 5
 	aveY = aveY / 5
-
+	mRange = 30
 	print("X = %d, Y = %d", aveX, aveY)
-	if aveX < (midx-10) or aveX > (midx+10):
+	if aveX < (midx-mRange) or aveX > (midx+mRange):
 		if aveX < midx:
 			#Turn left
 			#turnRobot(-10)
