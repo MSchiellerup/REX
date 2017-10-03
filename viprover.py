@@ -86,50 +86,72 @@ def driveAround():
 		else:
 			turnRobot(-90)
 
+def detectGreenBox():
+	def activateCam():
+		# initialize the camera and grab a reference to the raw camera capture
+		camera = PiCamera()
+		time.sleep(1) # Wait for camera
 
-# initialize the camera and grab a reference to the raw camera capture
-camera = PiCamera()
-time.sleep(1) # Wait for camera
+		# Setting resolution and fr for camera
+		camera.resolution = (640, 480)
+		camera.framerate = 30
 
-camera.resolution = (640, 480)
-camera.framerate = 30
+		# get the current center of the image
+	  midx = 320
+	  midy = 240
 
-camera.shutter_speed = camera.exposure_speed
-camera.exposure_mode = 'off'
+		camera.shutter_speed = camera.exposure_speed
+		camera.exposure_mode = 'off'
 
-gain = camera.awb_gains
-camera.awb_mode='off'
-#gain = (Fraction(2,1), Fraction(1,1))
-#gain = (1.5, 1.5)
-camera.awb_gains = gain
+		gain = camera.awb_gains
+		camera.awb_mode='off'
 
-print "shutter_speed = ", camera.shutter_speed
-print "awb_gains = ", gain
+		camera.awb_gains = gain
 
-rawCapture = PiRGBArray(camera, size=camera.resolution)
- 
-# Open a window
-WIN_RF = "PiCam";
-cv2.namedWindow(WIN_RF);
-cv2.moveWindow(WIN_RF, 100, 100);
+		print "shutter_speed = ", camera.shutter_speed
+		print "awb_gains = ", gain
 
-#Green boundaries
-greenLower = (29, 86, 6)
-greenUpper = (64, 255, 255)
+		rawCapture = PiRGBArray(camera, size=camera.resolution)
+		 
+		# Open a window
+		WIN_RF = "PiCam";
+		cv2.namedWindow(WIN_RF);
+		cv2.moveWindow(WIN_RF, 100, 100);
 
-# allow the camera to warmup
-time.sleep(0.1)
+		# define the list of boundaries
+		boundaries = [
+			([29, 86, 6], 	 [64, 255, 255]), # green
+			([17, 15, 100],  [50, 56, 200]),  # red
+			([86, 31, 4], 	 [220, 88, 50]),  # blue
+			([25, 146, 190], [62, 174, 250]), # yellow
+			([103, 86, 65],  [145, 133, 128]) # gray
+		]
+
+		greenLower = np.array([29, 86, 6])
+		greenUpper = np.array([64, 255, 255])
+
+		# allow the camera to warmup
+		time.sleep(0.1)
+
+	for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+		# grab the raw NumPy array representing the image
+		image = frame.array
+		# Convert to HSV
+		hsv = cv2.cvtColor(image, cv2.COLOR_BGR2HSV)
+		# Threshhold hsv to only get green colour
+		mask = cv2.inRange(hsv, greenLower, greenUpper)
+		# Bitwise-AND mask and original image
+    res = cv2.bitwise_and(image,image, mask = mask)
  
 # capture frames from the camera
-for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
-	# grab the raw NumPy array representing the image
-	image = frame.array
+
+	
  	
- 	mask = cv2.inRange(image, greenLower, greenUpper)
- 	output = cv2.bitwise_and(image, image, mask = mask)
+ 	#mask = cv2.inRange(image, greenLower, greenUpper)
+ 	#output = cv2.bitwise_and(image, image, mask = mask)
 	# show the frame
-	cv2.imshow(WIN_RF, np.hstack([image, output]))
-	key = cv2.waitKey(1) & 0xFF
+	cv2.imshow(WIN_RF, np.hstack([image, res]))
+	key = cv2.waitKey(4) & 0xFF
  
 	# clear the stream in preparation for the next frame
 	rawCapture.truncate(0)
