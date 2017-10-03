@@ -143,13 +143,13 @@ for frame in camera.capture_continuous(rawCapture, format="bgr", use_video_port=
 	# Bitwise-AND mask and original image
   res = cv2.bitwise_and(image,image, mask = mask)
 
-# capture frames from the camera
+ # capture frames from the camera
 
 
 	
 	#mask = cv2.inRange(image, greenLower, greenUpper)
 	#output = cv2.bitwise_and(image, image, mask = mask)
-# show the frame
+ # show the frame
 	cv2.imshow(WIN_RF, np.hstack([image, res]))
 	key = cv2.waitKey(4) & 0xFF
 
