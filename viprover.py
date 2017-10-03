@@ -122,7 +122,7 @@ def driveAround():
 aveX = 0
 aveY = 0
 for i in range(5):
-	frame = camera.capture_continuous(rawCapture, format="bgr", use_video_port=True):
+	frame = camera.capture_continuous(rawCapture, format="bgr", use_video_port=True)
 	image = frame.array
 
 	hsv = cv2.cvtColor(image,cv2.COLOR_BGR2HSV)
