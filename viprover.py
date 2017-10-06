@@ -162,7 +162,7 @@ def locateAndTurn():
 
 	  	key = cv2.waitKey(6) & 0xFF
 	  	# clear the stream in preparation for the next frame
-		rawCapture.truncate(0)
+		
 		if images == 5:
 			break
 
@@ -215,7 +215,7 @@ def findBoxInFrame(camera, rawCapture):
 	M = cv2.moments(best_cnt)
 	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
 
-	stream.truncate()
+	rawCapture.truncate(0)
 
 	return (cx, cy), frame, contour
 
