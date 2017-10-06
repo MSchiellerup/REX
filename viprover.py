@@ -71,6 +71,7 @@ def driveRobot(cm): #Sleep(4) for 100cm
 	print("Driving %dcm",cm)
 	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
 	sleep(cm/25)
+	print frindo.stop()
 
 def turnRobot(grader): 
 	if grader < 0:
