@@ -38,7 +38,7 @@ midy = 240
 
 sleep(1)
 
-def seeColour:
+def seeColour():
 	camera, rawCapture = activateCam()
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	frame = rawCapture.array
