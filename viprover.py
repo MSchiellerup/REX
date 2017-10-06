@@ -239,7 +239,10 @@ def findBox():
     	boxPosition = False
 
     	while not foundBox:
-		boxPosition, frame, contour = findBoxInFrame()
+		x, y, frame, contour = findBoxInFrame()
+		if (x+y > 0):
+			boxPosition = (x,y)
+			
         	print(boxPosition)
         
         	if not boxPosition:
