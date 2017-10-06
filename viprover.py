@@ -191,9 +191,9 @@ def CanIDrive():
 	FrontSensor = frindo.read_front_ir_sensor()
 	if convertFrontDistanceToCM(FrontSensor) < 15:
 		return False
-	else if convertRightDistanceToCM(RightSensor) < 15:
+	elif convertRightDistanceToCM(RightSensor) < 15:
 		return False
-	else if convertLeftDistanceToCM(LeftSensor) < 15:
+	elif convertLeftDistanceToCM(LeftSensor) < 15:
 		return False
 	return True
 
