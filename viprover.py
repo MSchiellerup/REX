@@ -239,15 +239,9 @@ def findBox():
     	boxPosition = False
     	img = 0
     	while not foundBox:
-    		print img
-    		if img == 5:
-    			break
-
-    		img = img + 1
 
     		rawCapture.truncate(0)
 		boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
-		sleep(5)
         	print(boxPosition)
         	
         	if not boxPosition:
