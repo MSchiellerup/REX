@@ -270,10 +270,10 @@ def findBox():
 	        	print("drive(1)")
 
 	    	print('box found');
-	    	
+
 	    	mbyDrive = CanIDrive()
 	    	if mbyDrive:
-	    		driveRobot(5)
+	    		driveRobot(10)
 	    		print frindo.stop()
 
 
