@@ -326,6 +326,7 @@ def brandvidde():
 	# from our camera, then find the paper marker in the image, and initialize
 	# the focal length
 	marker = find_marker(image)
+	focalLength = (marker[1][0] * KNOWN_DISTANCE) / KNOWN_WIDTH
 	inches = distance_to_camera(KNOWN_WIDTH, focalLength, marker[1][0])
  
 	# draw a bounding box around the image and display it
