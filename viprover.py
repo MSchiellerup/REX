@@ -290,9 +290,7 @@ def findBox():
     	#rawCapture.release()
 
 #findBox()
-def brandvidde():
-	camera, rawCapture = activateCam()
-	rawCapture.truncate(0)
+def brandvidde(camera, rawCapture):
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	image = rawCapture.array
 
@@ -332,8 +330,10 @@ def brandvidde():
  
 	return focalLength, inches
 
+camera, rawCapture = activateCam()
 for x in range(1,11):
 	print "%d, %d" % (brandvidde())
+	rawCapture.truncate(0)
 
 
 
