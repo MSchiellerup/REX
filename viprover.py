@@ -296,11 +296,12 @@ def seeColour():
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	frame = rawCapture.array
 
-	intensity = frame.at<uchar>(Point(x, y));
-	blue = intensity.val[0];
-	green = intensity.val[1];
-	red = intensity.val[2];
-	print "Red=%d, Green=%d, Blue=%d" % (red,green,blue)
+	int bgr[3]
+	split(frame,bgr)
+	blue = bgr[0];
+	green = bgr.val[1];
+	red = bgr.val[2];
+	print "Blue=%d, Green=%d, Red=%d" % (blue,green,red)
 seeColour()
 
 
