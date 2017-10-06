@@ -211,7 +211,7 @@ def findBoxInFrame():
 	# return false if it's not the box.
 	# we could do this on the min size we expect the box to be?
 	if max_area < 1:
-		return (False, False)
+		return (False, False, False)
 
 	# find centroid of best_cnt and locate center
 	M = cv2.moments(best_cnt)
@@ -239,10 +239,7 @@ def findBox():
     	boxPosition = False
 
     	while not foundBox:
-		x, y, frame, contour = findBoxInFrame()
-		if (x+y > 0):
-			boxPosition = (x,y)
-			
+		boxPosition, frame, contour = findBoxInFrame()
         	print(boxPosition)
         
         	if not boxPosition:
