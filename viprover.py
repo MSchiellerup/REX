@@ -68,9 +68,11 @@ def convertLeftDistanceToCM(distance):
 def driveRobot(cm): #Sleep(4) for 100cm
 	leftSpeed = 129
 	speedConst = 1.305
+	amount = round(cm/25)
 	print("Driving %dcm",cm)
 	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
-	sleep(cm/25)
+	sleep(amount)
+	print frindo.stop()
 
 def turnRobot(grader): 
 	if grader < 0:
@@ -267,6 +269,7 @@ def findBox():
 	            		continue
 
 	        	print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
+	        	turnRobot(convertBoxPositionToTurn(frame, boxPosition))
 	        	print("drive(1)")
 
 	    	print('box found');
@@ -274,7 +277,6 @@ def findBox():
 	    	mbyDrive = CanIDrive()
 	    	if mbyDrive:
 	    		driveRobot(10)
-	    		print frindo.stop()
 
 
     	#rawCapture.release()
