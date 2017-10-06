@@ -215,7 +215,7 @@ def findBoxInFrame(camera, rawCapture):
 	M = cv2.moments(best_cnt)
 	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
 
-	return (cx, cy), frame, contours
+	return (cx, cy), frame, cnt
 
 def convertBoxPositionToTurn(frame, boxPosition):
     height, width, channels = frame.shape
@@ -229,7 +229,7 @@ def convertBoxPositionToTurn(frame, boxPosition):
 
 def boxFound(contour):
     # replace 100 with some size
-    return cv2.contourArea(cnt) > 100
+    return cv2.contourArea(contour) > 100
 
 def findBox():
 	camera, rawCapture = activateCam()
