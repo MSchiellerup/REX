@@ -241,8 +241,9 @@ def findBox():
         	print(boxPosition)
         
         	if not boxPosition:
-    		# turn right 25 degrees and start the loop over
-            		print("turn(25)")
+    			# turn right 25 degrees and start the loop over
+    			turnRobot(25)			
+            		print("Turning 25 degrees. Loop")
             		continue
 
         	if boxFound(contour):
@@ -253,9 +254,9 @@ def findBox():
         	print("drive(1)")
 
     	print('box found');
+    	rawCapture.release()
 
 
-rawCapture.release()
 cv2.destroyAllWindows()
 
 print frindo.stop()
