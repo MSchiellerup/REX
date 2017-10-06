@@ -48,7 +48,7 @@ def activateCam():
 
 	camera.shutter_speed = camera.exposure_speed
 	camera.exposure_mode = 'off'
-	camera.brightness = 60
+	camera.brightness = 58
 
 	rawCapture = PiRGBArray(camera, size=(640, 480))
 	return camera, rawCapture
