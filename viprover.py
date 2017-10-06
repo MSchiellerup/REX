@@ -271,7 +271,7 @@ def findBox():
 	        	print("drive(1)")
 	    	print('box found');
 	    	mbyDrive = CanIDrive()
-	    	if mbyDrive = True:
+	    	if mbyDrive:
 	    		driveRobot(5)
 
 
