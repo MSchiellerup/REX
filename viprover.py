@@ -184,7 +184,8 @@ def locateAndTurn():
 			return (10)
 	return 0
 
-def findBoxInFrame(camera, rawCapture):
+def findBoxInFrame():
+	camera, rawCapture = activateCam()
 	frame = camera.capture(rawCapture, format="bgr", use_video_port=True)
 
 	hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
@@ -231,7 +232,6 @@ def boxFound(contour):
     return cv2.contourArea(cnt) > 100
 
 def findBox():
-	camera, rawCapture = activateCam()
 
     	foundBox = False
     	boxPosition = False
