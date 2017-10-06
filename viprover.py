@@ -274,6 +274,8 @@ def findBox():
 	        	if boxFound(contour):
 	            		foundBox = True
 	            		continue
+	            	else:
+	            		turnRobot(25)
 
 	        	#print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
 	        	#turnRobot(int(round(convertBoxPositionToTurn(frame, boxPosition)/2)))
