@@ -184,9 +184,7 @@ def locateAndTurn():
 			return (10)
 	return 0
 
-def findBoxInFrame():
-	camera, rawCapture = activateCam()
-
+def findBoxInFrame(camera, rawCapture):
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	frame = rawCapture.array
 
@@ -234,16 +232,18 @@ def boxFound(contour):
     return cv2.contourArea(cnt) > 100
 
 def findBox():
+	camera, rawCapture = activateCam()
 
     	foundBox = False
     	boxPosition = False
     	img = 0
     	while not foundBox:
+    		print img
     		if img == 5:
     			break
 
     		img+1
-		boxPosition, frame, contour = findBoxInFrame()
+		boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
 		sleep(5)
         	print(boxPosition)
         
