@@ -241,14 +241,15 @@ def findBox():
     	while not foundBox:
     		if img == 5:
     			break
-    		img = img + 1
+
+    		img+1
 		boxPosition, frame, contour = findBoxInFrame()
 		sleep(5)
         	print(boxPosition)
         
         	if not boxPosition:
     			# turn right 25 degrees and start the loop over
-    			turnRobot(25)			
+    			#turnRobot(25)			
             		print("Turning 25 degrees. Loop")
             		continue
 
