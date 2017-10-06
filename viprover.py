@@ -186,7 +186,7 @@ def locateAndTurn():
 
 def findBoxInFrame():
 	camera, rawCapture = activateCam()
-	frame = camera.capture(rawCapture, format="bgr", use_video_port=True)
+	res, frame = camera.read() #capture(rawCapture, format="bgr", use_video_port=True)
 
 	hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
