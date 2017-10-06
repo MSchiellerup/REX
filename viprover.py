@@ -270,8 +270,8 @@ def findBox():
 	            		foundBox = True
 	            		continue
 
-	        	print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
-	        	turnRobot(int(round(convertBoxPositionToTurn(frame, boxPosition)/2)))
+	        	#print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
+	        	#turnRobot(int(round(convertBoxPositionToTurn(frame, boxPosition)/2)))
 	        	print("drive(1)")
 
 	    	print('box found');
