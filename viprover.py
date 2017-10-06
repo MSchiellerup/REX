@@ -329,7 +329,7 @@ def brandvidde():
 	focalLength = (marker[1][0] * KNOWN_DISTANCE) / KNOWN_WIDTH
 	inches = distance_to_camera(KNOWN_WIDTH, focalLength, marker[1][0])
  
-
+	rawCapture.truncate(0)
 	return focalLength, inches
 
 for x in range(1,11):
