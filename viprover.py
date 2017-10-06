@@ -38,6 +38,18 @@ midy = 240
 
 sleep(1)
 
+def seeColour:
+	camera, rawCapture = activateCam()
+	camera.capture(rawCapture, format="bgr", use_video_port=True)
+	frame = rawCapture.array
+
+	intensity = frame.at<uchar>(Point(x, y));
+	blue = intensity.val[0];
+	green = intensity.val[1];
+	red = intensity.val[2];
+	print "Red=%d, Green=%d, Blue=%d" % (red,green,blue)
+seeColour()
+
 def activateCam():
 	camera = PiCamera()
 	sleep(1) # Allow camera to start up
@@ -288,7 +300,7 @@ def findBox():
 
     	#rawCapture.release()
 
-findBox()
+#findBox()
 cv2.destroyAllWindows()
 
 print frindo.stop()
