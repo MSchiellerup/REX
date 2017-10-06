@@ -89,6 +89,7 @@ def turnRobot(grader):
 		print frindo.set_turnspeed(90)
 		print frindo.right()
 		sleep(turn)
+	print frindo.stop()
 
 def driveSquared():
 	for x in range(1,5):
@@ -251,7 +252,8 @@ def findBox():
         	
         	if not boxPosition:
     			# turn right 25 degrees and start the loop over
-    			#turnRobot(25)			
+    			turnRobot(25)	
+
             		print("Turning 25 degrees. Loop")
             		continue
 
