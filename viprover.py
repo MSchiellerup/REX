@@ -256,7 +256,7 @@ def findBox():
     	print('box found');
     	rawCapture.release()
 
-
+findBox()
 cv2.destroyAllWindows()
 
 print frindo.stop()
