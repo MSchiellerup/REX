@@ -246,7 +246,7 @@ def convertBoxPositionToTurn(frame, boxPosition):
 
 def boxFound(contour):
     # replace 100 with some size
-    return cv2.contourArea(contour) > 100
+    return cv2.contourArea(contour) > 50
 
 def findBox():
 	camera, rawCapture = activateCam()
