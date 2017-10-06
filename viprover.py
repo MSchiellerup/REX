@@ -215,6 +215,8 @@ def findBoxInFrame(camera, rawCapture):
 	M = cv2.moments(best_cnt)
 	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
 
+	stream.truncate()
+
 	return (cx, cy), frame, contour
 
 def convertBoxPositionToTurn(frame, boxPosition):
@@ -242,11 +244,12 @@ def findBox():
     		if img == 5:
     			break
 
-    		img+1
+    		img = img + 1
+
 		boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
 		sleep(5)
         	print(boxPosition)
-        
+        	
         	if not boxPosition:
     			# turn right 25 degrees and start the loop over
     			#turnRobot(25)			
