@@ -51,7 +51,7 @@ def activateCam():
 	camera.brightness = 60
 
 	rawCapture = PiRGBArray(camera, size=(640, 480))
-	return (camera, rawCapture)
+	return camera, rawCapture
 
 def convertFrontDistanceToCM(distance):
 	distanceReturn = int(round((79.943427 * (0.9953660709 ** distance))))
