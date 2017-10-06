@@ -296,7 +296,16 @@ def seeColour():
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	frame = rawCapture.array
 
-	print frame
+	hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
+	h = float(hsv[:,:,0])/255.0
+	s = float(hsv[:,:,1])/255.0
+	v = float(hsv[:,:,2])/255.0
+
+	T1 = 0.15
+	T2 = 0.15
+	T3 = 0.15
+
+	mygreen = (abs(h-0.33) < T1) & (v < T2) & (s > T3)
 	#print "Blue=%d, Green=%d, Red=%d" % (blue,green,red)
 seeColour()
 
