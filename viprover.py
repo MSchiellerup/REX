@@ -331,7 +331,7 @@ def brandvidde(camera, rawCapture):
 	return focalLength, inches
 
 camera, rawCapture = activateCam()
-for x in range(1,11):
+for x in range(1,51):
 	print "%d, %d" % (brandvidde(camera, rawCapture))
 	rawCapture.truncate(0)
 
