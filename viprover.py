@@ -303,7 +303,7 @@ def brandvidde():
 	 
 		# find the contours in the edged image and keep the largest one;
 		# we'll assume that this is our piece of paper in the image
-		(cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+		(_, cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
 		c = max(cnts, key = cv2.contourArea)
 	 
 		# compute the bounding box of the of the paper region and return it
