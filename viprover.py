@@ -333,7 +333,7 @@ def brandvidde():
 	return focalLength, inches
 
 for x in range(1,11):
-	print "%d, %d, %d" % (x, brandvidde())
+	print "%d, %d" % (brandvidde())
 
 
 
