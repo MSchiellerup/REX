@@ -314,7 +314,7 @@ def brandvidde(camera, rawCapture):
 	 
 	# initialize the known distance from the camera to the object, which
 	# in this case is inches
-	KNOWN_DISTANCE = 27.55
+	KNOWN_DISTANCE = 31.49
 	 
 	# initialize the known object width, which in this case, the piece of
 	# paper is 11 inches wide
