@@ -237,9 +237,13 @@ def findBox():
 
     	foundBox = False
     	boxPosition = False
-
+    	img = 0
     	while not foundBox:
+    		if img == 5:
+    			break
+    		img = img + 1
 		boxPosition, frame, contour = findBoxInFrame()
+		sleep(5)
         	print(boxPosition)
         
         	if not boxPosition:
