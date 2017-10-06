@@ -290,25 +290,46 @@ def findBox():
     	#rawCapture.release()
 
 #findBox()
-
-def seeColour():
+def brandvidde():
 	camera, rawCapture = activateCam()
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
-	frame = rawCapture.array
+	image = rawCapture.array
 
-	hsv = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
-	h = float(hsv[:,:,0])/255.0
-	s = float(hsv[:,:,1])/255.0
-	v = float(hsv[:,:,2])/255.0
+	def find_marker(image):
+		# convert the image to grayscale, blur it, and detect edges
+		gray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+		gray = cv2.GaussianBlur(gray, (5, 5), 0)
+		edged = cv2.Canny(gray, 35, 125)
+	 
+		# find the contours in the edged image and keep the largest one;
+		# we'll assume that this is our piece of paper in the image
+		(cnts, _) = cv2.findContours(edged.copy(), cv2.RETR_LIST, cv2.CHAIN_APPROX_SIMPLE)
+		c = max(cnts, key = cv2.contourArea)
+	 
+		# compute the bounding box of the of the paper region and return it
+		return cv2.minAreaRect(c)
+	 
+	def distance_to_camera(knownWidth, focalLength, perWidth):
+		# compute and return the distance from the maker to the camera
+		return (knownWidth * focalLength) / perWidth
+	 
+	# initialize the known distance from the camera to the object, which
+	# in this case is cm
+	KNOWN_DISTANCE = 82
+	 
+	# initialize the known object width, which in this case, the piece of
+	# paper is 11 inches wide
+	KNOWN_WIDTH = 30.2
+	 
+	 
+	# load the furst image that contains an object that is KNOWN TO BE 2 feet
+	# from our camera, then find the paper marker in the image, and initialize
+	# the focal length
+	marker = find_marker(image)
+	focalLength = (marker[1][0] * KNOWN_DISTANCE) / KNOWN_WIDTH
+	return focalLength
 
-	T1 = 0.15
-	T2 = 0.15
-	T3 = 0.15
-
-	mygreen = (abs(h-0.33) < T1) & (v < T2) & (s > T3)
-	#print "Blue=%d, Green=%d, Red=%d" % (blue,green,red)
-seeColour()
-
+print "%d" % (brandvidde())
 
 
 
