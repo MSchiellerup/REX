@@ -330,7 +330,7 @@ def brandvidde():
 	inches = distance_to_camera(KNOWN_WIDTH, focalLength, marker[1][0])
  
 	# draw a bounding box around the image and display it
-	box = np.int0(cv2.cv.BoxPoints(marker))
+	box = np.int0(cv2.BoxPoints(marker))
 	cv2.drawContours(image, [box], -1, (0, 255, 0), 2)
 	cv2.putText(image, "%.2fft" % (inches / 12),
 		(image.shape[1] - 200, image.shape[0] - 20), cv2.FONT_HERSHEY_SIMPLEX,
