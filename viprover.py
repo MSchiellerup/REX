@@ -260,6 +260,7 @@ def findBox():
     		foundBox = False
     		boxPosition = False
 	    	while not foundBox:
+	    		boxPosition = False
 	    		rawCapture.truncate(0)
 			boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
 	        	print(boxPosition)
