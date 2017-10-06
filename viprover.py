@@ -292,6 +292,7 @@ def findBox():
 #findBox()
 def brandvidde():
 	camera, rawCapture = activateCam()
+	rawCapture.truncate(0)
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	image = rawCapture.array
 
@@ -329,7 +330,6 @@ def brandvidde():
 	focalLength = (marker[1][0] * KNOWN_DISTANCE) / KNOWN_WIDTH
 	inches = distance_to_camera(KNOWN_WIDTH, focalLength, marker[1][0])
  
-	rawCapture.truncate(0)
 	return focalLength, inches
 
 for x in range(1,11):
