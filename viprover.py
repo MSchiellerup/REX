@@ -217,7 +217,7 @@ def findBoxInFrame():
 	M = cv2.moments(best_cnt)
 	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
 
-	return ((cx, cy), frame, contour)
+	return (cx, cy), frame, contour
 
 def convertBoxPositionToTurn(frame, boxPosition):
     height, width, channels = frame.shape
