@@ -215,8 +215,6 @@ def findBoxInFrame(camera, rawCapture):
 	M = cv2.moments(best_cnt)
 	cx,cy = int(M['m10']/M['m00']), int(M['m01']/M['m00'])
 
-	rawCapture.truncate(0)
-
 	return (cx, cy), frame, contour
 
 def convertBoxPositionToTurn(frame, boxPosition):
@@ -246,6 +244,7 @@ def findBox():
 
     		img = img + 1
 
+    		rawCapture.truncate(0)
 		boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
 		sleep(5)
         	print(boxPosition)
