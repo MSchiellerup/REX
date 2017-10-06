@@ -278,7 +278,7 @@ def findBox():
 
 	    	mbyDrive = CanIDrive()
 	    	if mbyDrive:
-	    		driveRobot(20)
+	    		driveRobot(10)
 
 
     	#rawCapture.release()
