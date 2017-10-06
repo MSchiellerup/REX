@@ -332,7 +332,7 @@ def brandvidde(camera, rawCapture):
 
 camera, rawCapture = activateCam()
 for x in range(1,11):
-	print "%d, %d" % (brandvidde())
+	print "%d, %d" % (brandvidde(camera, rawCapture))
 	rawCapture.truncate(0)
 
 
