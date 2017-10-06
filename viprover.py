@@ -246,8 +246,7 @@ def findBox():
         	
         	if not boxPosition:
     			# turn right 25 degrees and start the loop over
-    			turnRobot(25)	
-
+    			turnRobot(25)
             		print("Turning 25 degrees. Loop")
             		continue
 
