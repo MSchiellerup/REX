@@ -246,7 +246,7 @@ def convertBoxPositionToTurn(frame, boxPosition):
 
 def boxFound(contour):
     # replace 100 with some size
-    print cv2.contourArea(contour)
+    print "Contour = %d" % cv2.contourArea(contour)
     return cv2.contourArea(contour) > 50
 
 def findBox():
