@@ -255,37 +255,35 @@ def boxFound(contour):
 def findBox():
 	camera, rawCapture = activateCam()
 
-	mbyDrive = True
-    	while mbyDrive:
-    		foundBox = False
-    		boxPosition = False
-	    	while not foundBox:
-	    		boxPosition = False
-	    		rawCapture.truncate(0)
-			boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
-	        	print(boxPosition)
-	        	
-	        	if not boxPosition:
-	    			# turn right 25 degrees and start the loop over
-	    			turnRobot(25)
-	            		print("Turning 25 degrees. Loop")
-	            		continue
+	#mbyDrive = True
+    	#while mbyDrive:
+	foundBox = False
+	boxPosition = False
+    	while not foundBox:
+    		rawCapture.truncate(0)
+		boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
+        	print(boxPosition)
+        	
+        	if not boxPosition:
+    			# turn right 25 degrees and start the loop over
+    			turnRobot(25)
+            		print("Turning 25 degrees. Loop")
+            		continue
 
-	        	if boxFound(contour):
-	            		foundBox = True
-	            		continue
-	            	else:
-	            		turnRobot(25)
+        	if boxFound(contour):
+            		foundBox = True
+            		continue
 
-	        	#print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
-	        	#turnRobot(int(round(convertBoxPositionToTurn(frame, boxPosition)/2)))
-	        	#print("drive(1)")
 
-	    	#print('box found');
+        	#print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
+        	#turnRobot(int(round(convertBoxPositionToTurn(frame, boxPosition)/2)))
+        	#print("drive(1)")
 
-	    	mbyDrive = CanIDrive()
-	    	if mbyDrive:
-	    		driveRobot(10)
+    	#print('box found');
+
+    	#mbyDrive = CanIDrive()
+    	#if mbyDrive:
+    	#	driveRobot(10)
 
 
     	#rawCapture.release()
