@@ -296,12 +296,8 @@ def seeColour():
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	frame = rawCapture.array
 
-	int bgr[3]
-	split(frame,bgr)
-	blue = bgr[0];
-	green = bgr.val[1];
-	red = bgr.val[2];
-	print "Blue=%d, Green=%d, Red=%d" % (blue,green,red)
+	print frame
+	#print "Blue=%d, Green=%d, Red=%d" % (blue,green,red)
 seeColour()
 
 
