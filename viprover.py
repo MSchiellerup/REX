@@ -249,10 +249,9 @@ def findBox():
 	camera, rawCapture = activateCam()
 
 	mbyDrive = True
-    	foundBox = False
-    	boxPosition = False
-    	img = 0
     	while mbyDrive:
+    		foundBox = False
+    		boxPosition = False
 	    	while not foundBox:
 	    		rawCapture.truncate(0)
 			boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
