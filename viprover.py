@@ -70,6 +70,8 @@ def driveRobot(cm): #Sleep(4) for 100cm
 	speedConst = 1.305
 	amount = round(cm/25)
 	print("Driving %dcm",cm)
+	print frindo.go_diff(180, 235, 1, 1)
+	sleep(0.01)
 	print frindo.go_diff(leftSpeed, int(round(speedConst * leftSpeed)), 1, 1)	
 	sleep(amount)
 	print frindo.stop()
