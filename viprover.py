@@ -250,7 +250,7 @@ def convertBoxPositionToTurn(frame, boxPosition):
 def boxFound(contour):
     # replace 100 with some size
     print "Contour = %d" % cv2.contourArea(contour)
-    return cv2.contourArea(contour) > 50
+    return cv2.contourArea(contour) > 100
 
 def findBox():
 	camera, rawCapture = activateCam()
@@ -277,9 +277,9 @@ def findBox():
 
 	        	#print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
 	        	#turnRobot(int(round(convertBoxPositionToTurn(frame, boxPosition)/2)))
-	        	print("drive(1)")
+	        	#print("drive(1)")
 
-	    	print('box found');
+	    	#print('box found');
 
 	    	mbyDrive = CanIDrive()
 	    	if mbyDrive:
