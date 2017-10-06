@@ -185,6 +185,18 @@ def locateAndTurn():
 			return (10)
 	return 0
 
+def CanIDrive():
+	RightSensor = frindo.read_right_ir_sensor()
+	LeftSensor = frindo.read_left_ir_sensor()
+	FrontSensor = frindo.read_front_ir_sensor()
+	if convertFrontDistanceToCM(FrontSensor) < 15:
+		return False
+	else if convertRightDistanceToCM(RightSensor) < 15:
+		return False
+	else if convertLeftDistanceToCM(LeftSensor) < 15:
+		return False
+	return True
+
 def findBoxInFrame(camera, rawCapture):
 	camera.capture(rawCapture, format="bgr", use_video_port=True)
 	frame = rawCapture.array
@@ -235,29 +247,34 @@ def boxFound(contour):
 def findBox():
 	camera, rawCapture = activateCam()
 
+	mbyDrive = True
     	foundBox = False
     	boxPosition = False
     	img = 0
-    	while not foundBox:
+    	while mbyDrive:
+	    	while not foundBox:
+	    		rawCapture.truncate(0)
+			boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
+	        	print(boxPosition)
+	        	
+	        	if not boxPosition:
+	    			# turn right 25 degrees and start the loop over
+	    			turnRobot(25)
+	            		print("Turning 25 degrees. Loop")
+	            		continue
 
-    		rawCapture.truncate(0)
-		boxPosition, frame, contour = findBoxInFrame(camera, rawCapture)
-        	print(boxPosition)
-        	
-        	if not boxPosition:
-    			# turn right 25 degrees and start the loop over
-    			turnRobot(25)
-            		print("Turning 25 degrees. Loop")
-            		continue
+	        	if boxFound(contour):
+	            		foundBox = True
+	            		continue
 
-        	if boxFound(contour):
-            		foundBox = True
-            		continue
+	        	print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
+	        	print("drive(1)")
+	    	print('box found');
+	    	mbyDrive = CanIDrive()
+	    	if mbyDrive = True:
+	    		driveRobot(5)
 
-        	print("turn(%i)" % (convertBoxPositionToTurn(frame, boxPosition)))
-        	print("drive(1)")
 
-    	print('box found');
     	#rawCapture.release()
 
 findBox()
