@@ -263,7 +263,7 @@ def findBox():
         	print("drive(1)")
 
     	print('box found');
-    	rawCapture.release()
+    	#rawCapture.release()
 
 findBox()
 cv2.destroyAllWindows()
